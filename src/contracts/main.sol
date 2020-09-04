@@ -39,6 +39,17 @@ contract main{
         string cin;
     }
 
+    struct Proposal{
+        string forSchl;
+        string byManfac;
+        string description;
+        string prototypeHash;
+        string receiptHash;
+        string status;
+        uint cost;
+        address payable merchant;
+    }
+
     mapping(address=>school) public schools;
     mapping(uint=>localAdmin) public lAdmins;
     mapping(address=>Proposal[]) public proposalsForSchool;
@@ -49,12 +60,6 @@ contract main{
     constructor() public{
         admin=msg.sender;
         proposalCount=0;
-    }
-
-    struct Proposal{
-        string forSchl;
-        string byManfac;
-        string description;
     }
 
     function string_check(string memory str1, string memory str2) pure internal returns (bool) {
@@ -83,4 +88,35 @@ contract main{
         proposalCount+=1;
         proposalsForSchool[_saddress].push(Proposal(schools[_saddress].name,manufacturerIds[msg.sender],_descreption,_ipfshash,'','Proposed',_costPerPerson,manufacturers[manufacturerIds[msg.sender]].man_address));
     }
+
+     function acceptProposal(uint _pid) public {
+        schools[msg.sender].currentConsignment=_pid;
+        proposalsForSchool[msg.sender][_pid].cost*=schools[msg.sender].needyCount;
+        for(uint itr=1;itr<proposalsForSchool[msg.sender].length;itr++){
+            if(itr==_pid)
+            proposalsForSchool[msg.sender][_pid].status='Accepted';
+            else
+            proposalsForSchool[msg.sender][itr].status='Rejected';
+        }
+    }
+
+    function confirmReceipt(address  _saddress,uint _pid,string memory _ipfs) public{
+      proposalsForSchool[_saddress][_pid].status='Received';
+      proposalsForSchool[_saddress][_pid].receiptHash=_ipfs;
+    }
+
+    function proofOfWork(uint _pid,uint _aadhaar,string memory _ipfs) public payable {
+        NeedyStudents[_aadhaar].ipfsHash=_ipfs;
+        NeedyStudents[_aadhaar].consignment=_pid;
+        schools[msg.sender].needyCount-=1;
+        if(schools[msg.sender].needyCount==0){
+            address payable merchant = proposalsForSchool[msg.sender][_pid].merchant;
+            merchant.transfer(schools[msg.sender].balance);
+            proposalsForSchool[msg.sender][_pid].status='Completed';
+            schools[msg.sender].balance=0;
+            schools[msg.sender].currentConsignment=0;
+            schools[msg.sender].active=false;
+        }
+    }
+
 }
