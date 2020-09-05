@@ -1,0 +1,22 @@
+#navi {color:#fed136;font-family:Arial}
+#navi:hover{color:#fec503}
+#navi .nav-link{font-size:90%;font-weight:400;padding:.75em 0;letter-spacing:1px;color:#fff;font-family:'Segoe UI'}
+#navi .nav-link.active,#navi .navbar-nav .nav-item .nav-link:hover{color:#fed136}@media (min-width:992px){
+#navi .navbar-brand{font-size:1.75em;-webkit-transition:all .3s;transition:all .3s}
+#navi .navbar-nav .nav-item .nav-link{padding:1.1em 1em!important}}
+header.head{text-align:center;color:#fff;background-image:url(../img/header-bg.jpg);padding-bottom:50px;background-repeat:no-repeat;background-attachment:scroll;background-position:center center;background-size:cover}
+header.head .intro-text{padding-top:150px;padding-bottom:100px}
+header.head .intro-text .intro-heading{margin-bottom:25px}@media (min-width:768px)
+{header.head .intro-text{padding-top:300px;padding-bottom:200px}}
+a{color:#fed136}a:hover{color:#fec503}
+h1{font-weight:700;font-family:'Segoe UI'}
+.btn-primary{background-color:#fed136;border-color:#fed136}
+.btn-primary:hover{background-color:#fec810!important;border-color:#fec810!important;color:#fff}.btn-primary:active,.btn-primary:focus{-webkit-box-shadow:0 0 0 .2rem rgba(254,209,55,.5)!important;box-shadow:0 0 0 .2rem rgba(254,209,55,.5)!important}
+.page-section{padding:100px 0}.page-section h2.section-heading{font-size:40px;margin-top:0;margin-bottom:15px}
+.page-section h3.section-subheading{font-size:16px;font-weight:400;font-style:italic;margin-bottom:75px;}
+section#contact{background-color:#212529;background-image:url(../img/map-image.png);background-repeat:no-repeat;background-position:center}section#contact .section-heading{color:#fff}section#contact .form-group{margin-bottom:25px}
+section#contact .form-group input,section#contact .form-group textarea{padding:20px}section#contact .form-group input.form-control{height:auto}section#contact .form-group textarea.form-control{height:248px}section#contact .form-control:focus{border-color:#fed136;-webkit-box-shadow:none;box-shadow:none}section#contact ::-webkit-input-placeholder{font-weight:700;color:#ced4da;font-family:Arial}section#contact :-moz-placeholder{font-weight:700;color:#ced4da;font-family:Arial}
+section#contact ::-moz-placeholder{font-weight:700;color:#ced4da;font-family:Arial}section#contact :-ms-input-placeholder{font-weight:700;color:#ced4da;font-family:Arial}.footer{padding:25px 0;text-align:center}.footer span.copyright{font-size:90%;line-height:40px;text-transform:none;font-family:Arial}.footer ul.quicklinks{font-size:90%;line-height:40px;margin-bottom:0;}ul.social-buttons{margin-bottom:0}
+ul.social-buttons li a{font-size:20px;line-height:50px;display:block;width:50px;height:50px;-webkit-transition:all .3s;transition:all .3s;color:#fff;border-radius:100%;outline:0;background-color:#212529}ul.social-buttons li a:active,ul.social-buttons li a:focus,ul.social-buttons li a:hover{background-color:#fed136}
+.cusform{width: 500px;background:#16161d;border-radius: 10px;overflow: hidden;padding: 42px 55px 45px 55px;color:#fed136;}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{color: #fed136;}

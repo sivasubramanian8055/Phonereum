@@ -3,6 +3,7 @@ import {Form,Container,Button} from 'react-bootstrap';
 import web3 from './web3';
 import main from './main';
 import IPFSManager from './IPFSManager';
+import Navibar from'./Navibar';
 
 class Manufacturer extends Component {
 
@@ -24,9 +25,13 @@ class Manufacturer extends Component {
 
   onCreateProposal=async(event)=>{
     event.preventDefault()
+    if(this.state.ipfsHash==='')
+    alert('Upload your Prototype first!')
+    else{
     await main.methods.createProposal(this.state.address,this.state.desc,this.state.ipfsHash,web3.utils.toWei(this.state.cost,'ether')).send({from:this.props.account})
     this.setState({status:false})
     this.setState({aadhaar:0})
+    }
   }
 
   constructor(props) {
@@ -35,15 +40,19 @@ class Manufacturer extends Component {
       address:'',
       desc:'',
       ipfsHash:'',
-      cost:0
+      cost:0,
+      proposalForm:'block'
     }
   }
 
   render() {
     return (
       <div>
-        <Container>
-        <Form onSubmit={this.onCreateProposal}>
+        <Navibar/>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <Container className="cusform">
+        <Form onSubmit={this.onCreateProposal} style={{display:this.state.proposalForm}}>
         <Form.Group controlId="formBasicEmail">
         <Form.Label>Address of School Address:</Form.Label>
         <Form.Control type="text" placeholder="Eth Address" onChange={this.onAddressChange} />

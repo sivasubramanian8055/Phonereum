@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Form,Container,Button,Nav} from 'react-bootstrap';
 import main from './main';
+import Navibar from './Navibar';
 
 class Admin extends Component{
 
@@ -41,6 +42,19 @@ class Admin extends Component{
    this.setState({address:''})
   }
 
+  tabSwitch=(eventKey)=>{
+    if(eventKey==='lAdmin'){
+       this.setState({lAdminForm:'block'})
+       this.setState({manufacturerForm:'none'})
+       this.setState({welcome:'none'})
+     }
+     else{
+       this.setState({manufacturerForm:'block'})
+       this.setState({lAdminForm:'none'})
+       this.setState({welcome:'none'})
+     }
+   }
+
   constructor(props) {
       super(props)
       this.state ={
@@ -48,7 +62,10 @@ class Admin extends Component{
         Cin:'',
         name:'',
         address:'',
-        pincode:0
+        pincode:0,
+        welcome:'block',
+        lAdminForm:'none',
+        manufacturerForm:'none'
       }
   }
 
@@ -56,8 +73,22 @@ class Admin extends Component{
   render() {
     return (
           <div>
-          <Container>
-          <Form onSubmit={this.onCreateLocalAdmin}>
+          <Navibar/>
+          <Nav variant="tabs" defaultActiveKey="welcome" onSelect={this.tabSwitch}>
+          <Nav.Item>
+            <Nav.Link eventKey="lAdmin">Create LocalAdmin</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="Manufacturer">Create Manufacturer</Nav.Link>
+          </Nav.Item>
+          </Nav>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <Container className="cusform">
+          <Form style={{display:this.state.welcome}}>
+          <Form.Label>Welcome Admin! You are about to bring sunshine to the lives of some lovely children!</Form.Label>
+          </Form>
+          <Form onSubmit={this.onCreateLocalAdmin} style={{display:this.state.lAdminForm}}>
           <Form.Group controlId="formBasicEmail">
           <Form.Label>Address of Local Admin:</Form.Label>
           <Form.Control type="text" placeholder="Eth Address" onChange={this.onAddressChange} />
@@ -79,7 +110,7 @@ class Admin extends Component{
             </Button>
           </Form>
 
-          <Form onSubmit={this.onCreateManufacturer}>
+          <Form onSubmit={this.onCreateManufacturer} style={{display:this.state.manufacturerForm}}>
           <Form.Group controlId="formBasicEmail">
           <Form.Label>Address of Manufacturer:</Form.Label>
           <Form.Control type="text" placeholder="Eth Address" onChange={this.onAddressChange} />

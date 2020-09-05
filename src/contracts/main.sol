@@ -178,4 +178,16 @@ contract main{
         }
     }
 
+    function getSchoolsCount(uint _pin) public view returns(uint){
+        return(schoolsByPin[_pin].length);
+    }
+
+    function getProposalsCount(address _addr) public view returns(uint){
+        return(proposalsForSchool[_addr].length);
+    }
+
+    function getNeedyCount(address _addr) public view returns(uint){
+        return(NeedyStudentsBySchool[_addr].length);
+    }
+
 }

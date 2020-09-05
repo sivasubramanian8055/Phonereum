@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {Form,Container,Dropdown,DropdownButton,Button} from 'react-bootstrap';
+import {Form,Container,Dropdown,DropdownButton,Button,Nav} from 'react-bootstrap';
 import main from './main';
 import IPFSManager from './IPFSManager';
+import Navibar from './Navibar';
 
 class Ladmin extends Component {
 
@@ -78,6 +79,49 @@ class Ladmin extends Component {
     this.setState({pid:''})
   }
 
+  tabSwitch=(eventKey)=>{
+    if(eventKey==='school'){
+      this.setState({flagForm:'none'})
+      this.setState({consignmentForm:'none'})
+      this.setState({schoolForm:'block'})
+      this.setState({updateForm:'none'})
+      this.setState({confirmForm:'none'})
+      this.setState({welcome:'none'})
+     }
+     else if(eventKey==='consignment'){
+      this.setState({flagForm:'none'})
+      this.setState({consignmentForm:'block'})
+      this.setState({schoolForm:'none'})
+      this.setState({updateForm:'none'})
+      this.setState({confirmForm:'none'})
+      this.setState({welcome:'none'})
+     }
+     else if(eventKey==='flag'){
+      this.setState({flagForm:'block'})
+      this.setState({consignmentForm:'none'})
+      this.setState({schoolForm:'none'})
+      this.setState({updateForm:'none'})
+      this.setState({confirmForm:'none'})
+      this.setState({welcome:'none'})
+     }
+     else if(eventKey==='update'){
+      this.setState({flagForm:'none'})
+      this.setState({consignmentForm:'none'})
+      this.setState({schoolForm:'none'})
+      this.setState({updateForm:'block'})
+      this.setState({confirmForm:'none'})
+      this.setState({welcome:'none'})
+     }
+     else{
+      this.setState({flagForm:'none'})
+      this.setState({consignmentForm:'none'})
+      this.setState({schoolForm:'none'})
+      this.setState({updateForm:'none'})
+      this.setState({confirmForm:'block'})
+      this.setState({welcome:'none'})
+     }
+   }
+
    constructor(props) {
       super(props)
       this.state = {
@@ -90,15 +134,44 @@ class Ladmin extends Component {
         aadhaar:0,
         status:false,
         ipfsHash:'',
-        pid:0
+        pid:0,
+        schoolForm:'none',
+        welcome:'block',
+        consignmentForm:'none',
+        flagForm:'none',
+        updateForm:'none',
+        confirmForm:'none'
       }
     }
 
     render() {
     return (
       <div>
-        <Container>
-          <Form onSubmit={this.onCreateSchool}>
+        <Navibar/>
+        <Nav variant="tabs" defaultActiveKey="welcome" onSelect={this.tabSwitch}>
+        <Nav.Item>
+          <Nav.Link eventKey="school">Create School</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="consignment">Reset Consignment Status for School</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="flag">Flag a Needy Student</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="update">Update Total Count of School</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="confirm">Confirm Receipt of Device</Nav.Link>
+        </Nav.Item>
+        </Nav>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <Container className="cusform">
+        <Form style={{display:this.state.welcome}}>
+        <Form.Label>The job you do will create a mighty ocean in the long run</Form.Label>
+        </Form>
+          <Form onSubmit={this.onCreateSchool} style={{display:this.state.schoolForm}}>
             <Form.Group>
             <Form.Label>School Name:</Form.Label>
             <Form.Control type="text" placeholder="School Name:" onChange={this.onNameChange} />
@@ -114,7 +187,7 @@ class Ladmin extends Component {
             <Button variant="primary" type="submit">Add School under your region!</Button>
           </Form>
         
-            <Form onSubmit={this.onResetConsignment}>
+            <Form onSubmit={this.onResetConsignment} style={{display:this.state.consignmentForm}}>
             <Form.Group>
             <Form.Label>School Address:</Form.Label>
             <Form.Control type="text" placeholder="School Address:" onChange={this.onsAddressChange} />
@@ -129,7 +202,7 @@ class Ladmin extends Component {
             <Button variant="primary" type="submit">Confirm!</Button> 
             </Form>
      
-            <Form onSubmit={this.onFlagNeedy}>
+            <Form onSubmit={this.onFlagNeedy} style={{display:this.state.flagForm}}>
             <Form.Group>
             <Form.Label>Aadhaar Number of Student:</Form.Label>
             <Form.Control type="number" placeholder="Aadhaar Number" onChange={this.onAadhaarChange} />
@@ -144,7 +217,7 @@ class Ladmin extends Component {
             <Button variant="primary" type="submit">Confirm!</Button> 
             </Form>
      
-     <Form onSubmit={this.onUpdateTotal}>
+     <Form onSubmit={this.onUpdateTotal} style={{display:this.state.updateForm}}>
      <Form.Group controlId="formBasicEmail">
      <Form.Label>School Address:</Form.Label>
      <Form.Control type="text" placeholder="School Address" onChange={this.onsAddressChange} />
@@ -159,7 +232,7 @@ class Ladmin extends Component {
        </Button>
      </Form>
      
-    <Form onSubmit={this.onConfirmReceipt}>
+    <Form onSubmit={this.onConfirmReceipt} style={{display:this.state.confirmForm}}>
      <Form.Group controlId="formBasicEmail">
      <Form.Label>School Address:</Form.Label>
      <Form.Control type="text" placeholder="School Adsress" onChange={this.onsAddressChange} />
