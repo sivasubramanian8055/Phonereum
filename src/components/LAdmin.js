@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Form,Container,Dropdown,DropdownButton,Button} from 'react-bootstrap';
 import main from './main';
+import IPFSManager from './IPFSManager';
 
 class Ladmin extends Component {
 
@@ -28,8 +29,8 @@ class Ladmin extends Component {
          this.setState({dispFlag:keys[eventKey]})
      }
 
-    onIpfsHashChange=(event)=>{
-        this.setState({ipfsHash:event.target.value})
+    onIpfsHashChange=(hash)=>{
+        this.setState({ipfsHash:hash})
       }
 
     onPidChange=(event)=>{
@@ -167,10 +168,7 @@ class Ladmin extends Component {
          <Form.Label>Consignment Id</Form.Label>
          <Form.Control type="number" placeholder="Consignemnt Id" onChange={this.onPidChange} />
        </Form.Group>
-       <Form.Group controlId="formBasicEmail">
-       <Form.Label>Image Hash address:</Form.Label>
-       <Form.Control type="text" placeholder="Ipfs Hash" onChange={this.onIpfsHashChange} />
-     </Form.Group>
+       <IPFSManager label="Upload Confirmation Receipt of Delivery:" dataHandler={this.onIpfsHashChange} />
        <Button variant="primary" type="submit" >
        Confirm Receipt!
        </Button>

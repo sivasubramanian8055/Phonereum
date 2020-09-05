@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Form,Container,Button} from 'react-bootstrap';
 import web3 from './web3';
 import main from './main';
+import IPFSManager from './IPFSManager';
 
 class Manufacturer extends Component {
 
@@ -13,8 +14,8 @@ class Manufacturer extends Component {
     this.setState({desc:event.target.value})
   }
 
-  onIpfsHashChange=(event)=>{
-    this.setState({ipfsHash:event.target.value})
+  onIpfsHashChange=(hash)=>{
+    this.setState({ipfsHash:hash})
   }
 
   onCostChange=(event)=>{
@@ -51,10 +52,7 @@ class Manufacturer extends Component {
             <Form.Label>Description of Proposal:</Form.Label>
             <Form.Control type="text" placeholder="Description" onChange={this.onDescChange} />
           </Form.Group>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>IPFS hash of prototype:</Form.Label>
-            <Form.Control type="text" placeholder="IPFS hash" onChange={this.onIpfsHashChange} />
-        </Form.Group>
+          <IPFSManager label="Upload Document for Prototype:" dataHandler={this.onIpfsHashChange} />
         <Form.Group controlId="formBasicEmail">
         <Form.Label>Cost Per Person:</Form.Label>
         <Form.Control type="number" placeholder="Cost Per Person" onChange={this.onCostChange} />

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Container,Form,Button} from 'react-bootstrap';
 import main from './main';
-
+import IPFSManager from './IPFSManager';
 
 class School extends Component {
 
@@ -66,10 +66,7 @@ return (
     <Form.Label>Average Income:</Form.Label>
     <Form.Control type="number" placeholder="Average Income" onChange={this.onAvgIncomeChange} />
   </Form.Group>
-  <Form.Group controlId="formBasicEmail">
-  <Form.Label>Image Hash address:</Form.Label>
-  <Form.Control type="text" placeholder="Income Proof" onChange={this.onIpfsHashChange} />
-</Form.Group>
+  <IPFSManager label="Income Proof:" dataHandler={this.onIpfsHashChange} />
   <Button variant="primary" type="submit" >
   Create Needy!
   </Button>
@@ -94,10 +91,7 @@ return (
 <Form.Label>Aadhaar Number of Student:</Form.Label>
 <Form.Control type="number" placeholder="Aadhaar Number" onChange={this.onAadhaarChange} />
 </Form.Group>
-<Form.Group controlId="formBasicEmail">
-<Form.Label>IPFS Hash proof:</Form.Label>
-<Form.Control type="text" placeholder="IPFS hash" onChange={this.onIpfsHashChange} />
-</Form.Group>
+<IPFSManager label="Upload Proof of Work:" dataHandler={this.onIpfsHashChange} />
   <Button variant="primary" type="submit" >
   Submit Proof of the student!
   </Button>
