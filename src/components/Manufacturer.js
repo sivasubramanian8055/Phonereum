@@ -47,7 +47,7 @@ class Manufacturer extends Component {
 
   render() {
     return (
-      <div>
+      <div  class='bgd' style={{height:'760px'}}>
         <Navibar/>
         <p>&nbsp;</p>
         <p>&nbsp;</p>

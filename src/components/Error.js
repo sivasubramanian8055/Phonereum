@@ -5,7 +5,7 @@ class Error extends Component {
   render() {
     return (
       <div>
-      <p>Error Page</p>
+      <p style={{paddingTop:'20rem'}}>Error Page</p>
       </div>
     );
   }

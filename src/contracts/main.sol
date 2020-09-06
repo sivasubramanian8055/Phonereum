@@ -70,6 +70,11 @@ contract main{
         return (keccak256(abi.encodePacked(str1)) == keccak256(abi.encodePacked(str2)));
     }
 
+    function acceptDonation(address _saddress,uint _pid) public payable{
+        //require(proposalsForSchool[_saddress][_pid].cost>=(schools[_saddress].balance+msg.value),'You cant donate more than capped ether!');
+        schools[_saddress].balance+=msg.value;
+    }
+
     function createLocal(address _address,uint _pincode,string memory _name,uint _aadhaar) public{
          require(msg.sender==admin,"Forbidden");
          lAdmins[_pincode]=localAdmin(_pincode,_address,_name,_aadhaar);
@@ -182,12 +187,12 @@ contract main{
         return(schoolsByPin[_pin].length);
     }
 
-    function getProposalsCount(address _addr) public view returns(uint){
-        return(proposalsForSchool[_addr].length);
-    }
+    // function getProposalsCount(address _addr) public view returns(uint){
+    //     return(proposalsForSchool[_addr].length);
+    // }
 
-    function getNeedyCount(address _addr) public view returns(uint){
-        return(NeedyStudentsBySchool[_addr].length);
-    }
+    // function getNeedyCount(address _addr) public view returns(uint){
+    //     return(NeedyStudentsBySchool[_addr].length);
+    // }
 
 }
