@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Container,Form,Button} from 'react-bootstrap';
+import {Container,Form,Button,Nav} from 'react-bootstrap';
 import main from './main';
 import IPFSManager from './IPFSManager';
 import Navibar from './Navibar';
