@@ -71,7 +71,7 @@ contract main{
     }
 
     function acceptDonation(address _saddress,uint _pid) public payable{
-        //require(proposalsForSchool[_saddress][_pid].cost>=(schools[_saddress].balance+msg.value),'You cant donate more than capped ether!');
+        require(proposalsForSchool[_saddress][_pid].cost>=(schools[_saddress].balance+msg.value),'You cant donate more than capped ether!');
         schools[_saddress].balance+=msg.value;
     }
 
@@ -151,7 +151,7 @@ contract main{
         require(msg.sender==lAdmins[_pincode].lAdmin,'Forbidden');
         require(schools[_saddress].id!=address(0),'School doesnot exist');
         schools[_saddress].totalStudents=_count;
-    } 
+    }
 
     function confirmReceipt(uint _pincode,address  _saddress,uint _pid,string memory _ipfs) public{
       require(msg.sender==lAdmins[_pincode].lAdmin,'Forbidden');

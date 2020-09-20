@@ -64,7 +64,7 @@ class Manufacturer extends Component {
           <IPFSManager label="Upload Document for Prototype:" dataHandler={this.onIpfsHashChange} />
         <Form.Group controlId="formBasicEmail">
         <Form.Label>Cost Per Person:</Form.Label>
-        <Form.Control type="number" placeholder="Cost Per Person" onChange={this.onCostChange} />
+        <Form.Control type="text" placeholder="Cost Per Person" onChange={this.onCostChange} />
         </Form.Group>
             <Button variant="primary" type="submit" >
             Create Proposal!

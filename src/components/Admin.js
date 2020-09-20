@@ -8,7 +8,7 @@ class Admin extends Component{
   onAddressChange=(event)=>{
       this.setState({address:event.target.value})
     }
-    
+
   onAadhaarChange=(event)=>{
       this.setState({aadhaar:event.target.value})
     }
@@ -121,7 +121,7 @@ class Admin extends Component{
           </Form.Group>
           <Form.Group controlId="formBasicEmail">
           <Form.Label>CIN ID:</Form.Label>
-          <Form.Control type="text" placeholder="Income Proof" onChange={this.onCINchange} />
+          <Form.Control type="text" placeholder="CIN ID" onChange={this.onCINchange} />
         </Form.Group>
             <Button variant="primary" type="submit" >
             Create Manufacturer!

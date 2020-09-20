@@ -6,11 +6,17 @@ class CardCustom extends Component {
 
     constructor(props) {
         super(props)
-        this.state ={ 
+        this.state ={
           manu:'',
           desc:'',
-          hash:''
+          hash:'',
+          val:''
          }
+    }
+
+    onAmount=(event)=>{
+      event.preventDefault()
+      this.setState({val:event.target.value})
     }
 
     fetchConsignment=async (addr,cid)=>{
@@ -23,7 +29,7 @@ class CardCustom extends Component {
     donateEther=async(event)=>{
       event.preventDefault()
       const entry=event.target.value.split('@')
-      await main.methods.acceptDonation(entry[0],entry[1]).send({from:this.props.account,value:web3.utils.toWei('0.5','ether')})
+      await main.methods.acceptDonation(entry[0],entry[1]).send({from:this.props.account,value:web3.utils.toWei(this.state.val,'ether')})
     }
 
     render() {
@@ -41,14 +47,15 @@ class CardCustom extends Component {
                 <h6 class="card-subtitle mb-2 text-muted">{'Proposed Manufacturer: '+this.state.manu}</h6>
                 <p class="card-text">{'Description: '+this.state.desc}</p>
                 <a href={'https://ipfs.infura.io/ipfs/'+this.state.hash}>Click here to view Prototype!</a>
-                    <button type="button" class="btn btn-primary" value={school.id+'@'+school.currentConsignment} onClick={this.donateEther} > 
-                      Donate 0.5 Ether!
+                <input type="text" onChange={this.onAmount} placeholder="Amount In Ether"/>
+                    <button type="button" class="btn btn-primary" value={school.id+'@'+school.currentConsignment} onClick={this.donateEther} >
+                      Donate!
                     </button>
                   </div>
                 </div>
                 )
               })}
-        </div>     
+        </div>
       );
     }
 }

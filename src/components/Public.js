@@ -6,7 +6,7 @@ import TextInput from 'react-autocomplete-input';
 import CardCustom from './CardCustom';
 
 const cities=["Agra","Aligarh","Amroha","Ayodhya","Azamgarh","Bahraich","Ballia","Banda","Bara Banki","Bareilly","Basti","Bijnor","Bithur","Budaun","Bulandshahr","Deoria","Etah","Etawah","Faizabad","Farrukhabad-cum-Fatehgarh","Fatehpur","Fatehpur Sikri","Ghaziabad","Ghazipur","Gonda","Gorakhpur","Hamirpur","Hardoi","Hathras","Jalaun","Jaunpur","Jhansi","Kannauj","Kanpur","Lakhimpur","Lalitpur","Lucknow","Mainpuri","Mathura","Meerut","Mirzapur-Vindhyachal","Moradabad","Muzaffarnagar","Partapgarh","Pilibhit","Prayagraj","Rae Bareli","Rampur","Saharanpur","Sambhal","Shahjahanpur","Sitapur","Sultanpur","Tehri","Varanasi"];
-const pinCode={"Agra":[282001,283101],"Aligarh":[202001],"Lucknow":[226023,226004]}
+const pinCode={"Agra":[123,282001,283101],"Aligarh":[202001],"Lucknow":[226023,226004]}
 const dVal={true:'block',false:'none'}
 
 class Public extends Component {
@@ -45,7 +45,7 @@ class Public extends Component {
 
   constructor(props) {
     super(props)
-    this.state ={ 
+    this.state ={
       schoolAddress:'',
       cid:0,
       val:0,
@@ -77,7 +77,7 @@ class Public extends Component {
         </Form>
         </Container>
         </Row>
-        <Row> 
+        <Row>
         <Container className="cusform" style={{display:dVal[this.state.pinCard]}} >
         {this.state.welcome===true
         ?
@@ -89,7 +89,7 @@ class Public extends Component {
         </Row>
         <Container className="cusform" style={{backgroundColor:'white'}} >
         <CardCustom schools={this.state.schools} account={this.props.account} />
-        </Container> 
+        </Container>
       </div>
     );
   }

@@ -186,7 +186,7 @@ class Ladmin extends Component {
             </Form.Group>
             <Button variant="primary" type="submit">Add School under your region!</Button>
           </Form>
-        
+
             <Form onSubmit={this.onResetConsignment} style={{display:this.state.consignmentForm}}>
             <Form.Group>
             <Form.Label>School Address:</Form.Label>
@@ -199,9 +199,9 @@ class Ladmin extends Component {
             <Dropdown.Item eventKey="false">NO</Dropdown.Item>
             </DropdownButton>
             </Form.Group>
-            <Button variant="primary" type="submit">Confirm!</Button> 
+            <Button variant="primary" type="submit">Confirm!</Button>
             </Form>
-     
+
             <Form onSubmit={this.onFlagNeedy} style={{display:this.state.flagForm}}>
             <Form.Group>
             <Form.Label>Aadhaar Number of Student:</Form.Label>
@@ -214,9 +214,9 @@ class Ladmin extends Component {
             <Dropdown.Item eventKey="false">NO</Dropdown.Item>
             </DropdownButton>
             </Form.Group>
-            <Button variant="primary" type="submit">Confirm!</Button> 
+            <Button variant="primary" type="submit">Confirm!</Button>
             </Form>
-     
+
      <Form onSubmit={this.onUpdateTotal} style={{display:this.state.updateForm}}>
      <Form.Group controlId="formBasicEmail">
      <Form.Label>School Address:</Form.Label>
@@ -231,11 +231,11 @@ class Ladmin extends Component {
        Update the total value!
        </Button>
      </Form>
-     
+
     <Form onSubmit={this.onConfirmReceipt} style={{display:this.state.confirmForm}}>
      <Form.Group controlId="formBasicEmail">
      <Form.Label>School Address:</Form.Label>
-     <Form.Control type="text" placeholder="School Adsress" onChange={this.onsAddressChange} />
+     <Form.Control type="text" placeholder="School Address" onChange={this.onsAddressChange} />
    </Form.Group>
        <Form.Group controlId="formBasicEmail">
          <Form.Label>Consignment Id</Form.Label>
