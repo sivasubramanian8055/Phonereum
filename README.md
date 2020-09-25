@@ -18,6 +18,4 @@ Steps to run:
  
 3)Run "npm run start" to start server
 
-PPT Link: https://docs.google.com/presentation/d/1MSmc6_OMKGfutCp-ijXTrrkdnWt7t-_Ji9APjJZ3U_g/edit?usp=sharing
-
-DEMO Drive Link:https://drive.google.com/file/d/1LHUYINapjQwe85W0Q4wn_K1Qy59CThUq/view?usp=sharing
+DEMO Link:https://www.youtube.com/watch?v=9WW9hsi4Q_k&feature=youtu.be&ab_channel=Sriram.G
